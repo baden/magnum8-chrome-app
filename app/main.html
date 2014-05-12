@@ -1,0 +1,47 @@
+<!doctype html>
+<html data-ng-app="app" ng-csp="">
+    <head>
+        <meta charset="utf-8"/>
+
+        <!-- build:css styles/main.css -->
+
+        <!-- bower:css -->
+        <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+        <!-- endbower -->
+
+        <link href="styles/main.css" rel="stylesheet">
+        <!-- endbuild -->
+
+        <!-- build:js scripts/main.js -->
+
+        <!-- bower:js -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <script src="bower_components/angular/angular.js"></script>
+        <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="bower_components/d3/d3.js"></script>
+        <script src="bower_components/moment/moment.js"></script>
+        <!-- endbower -->
+
+        <script src="scripts/main.js"></script>
+        <script src="scripts/directives/all.js"></script>
+        <script src="scripts/directives/ports.js"></script>
+        <script src="scripts/directives/logbuffer.js"></script>
+        <script src="scripts/services/all.js"></script>
+        <script src="scripts/services/serial.js"></script>
+        <script src="scripts/services/log.js"></script>
+        <!-- endbuild -->
+
+    </head>
+    <body data-ng-controller="AppCtrl">
+
+        <div class="container">
+            <h1>Конфигуратор</h1>
+
+            <ports data-ng-disabled="connected"></ports>
+            <button type="button" class="btn btn-default" data-ng-if="port.path && !connected" data-ng-click="onConnect(port.path)">Подключить &gt;&gt;</button>
+            <button type="button" class="btn btn-default" data-ng-if="connected" data-ng-click="onDisconnect()">Отключить</button>
+            <logbuffer data-log="log"></logbuffer>
+        </div>
+
+    </body>
+</html>
